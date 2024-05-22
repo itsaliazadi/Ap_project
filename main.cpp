@@ -124,7 +124,7 @@ class Person{
 
         bool validate(std::string ID){
 
-            std::regex format("^(8[4-9]|9[0-9])[^\\d]{1,3}[4-6]{5}$");
+            std::regex format("^(8[4-9]|9[0-9])\\D{1,3}[0-35-9]{5}$");
 
             if (std::regex_match(ID, format)) {
                 return true;
@@ -150,13 +150,21 @@ class Employee{
 
     public:
         Employee(std::string Name="", std::string ID="", Address ad = Address(), int HourWork=0, int SalaryPerHour=0, int WorkToDo=0, int WorkDone=0){
-            name = Name;
-            id = ID;
-            address = ad;
-            hourWork = HourWork;
-            salaryPerHour = SalaryPerHour;
-            workToDo = WorkToDo;
-            workDone = WorkDone;
+            
+            if (validate(ID)){
+                name = Name;
+                id = ID;
+                address = ad;
+                hourWork = HourWork;
+                salaryPerHour = SalaryPerHour;
+                workToDo = WorkToDo;
+                workDone = WorkDone;
+            }
+
+            else{
+                std::cout<<"Invalid id..."<<"\n";
+            }
+
         }
 
         Employee(Employee& object){
@@ -206,6 +214,25 @@ class Employee{
             return is;
         }
 
+        bool validate(std::string ID){
+
+            std::regex format("^(8[4-9]|9[0-9])[^\\d]{1,3}\\*[0-3|7-9]{5}$");
+
+            if (std::regex_match(ID, format)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        double calculateSalary(){
+
+            double ratio = workDone/workToDo;
+            double preSalary = hourWork * salaryPerHour;
+            double finalSalary = preSalary * (1 - ratio);
+
+            return finalSalary;
+        }
 
 
 };
@@ -228,9 +255,9 @@ class Employee{
 
 int main(){
     Address address("Iran", "Tehran", "Piroozi");
-    // Person person("Ali", "87XYZ98772", address);
-    Employee employee("Ali", "123", address, 10, 25, 5, 5);
-    employee << std::cout;
+    // Person person("Ali", "87ygh12378", address);
+    Employee employee("Ali", "87*gh12378", address);
+    // employee << std::cout;
     }
 
     
