@@ -81,6 +81,16 @@ class Person{
             return os;
         }
 
+        std::istream& operator>>(std::istream& is) {
+            std::cout << "Enter name: ";
+            is >> name;
+            std::cout << "Enter id: ";
+            is >> id;
+            // std::cout << "Enter street: ";
+            // is >> street;
+            return is;
+        }
+
         std::string getName(){
             return name;
         }
@@ -128,6 +138,7 @@ class Person{
 int main(){
     Address address("Iran", "Tehran", "Piroozi");
     // address<<std::cout;
+
     // Address newAddress;
     // std::cout << "Enter a new address:" << std::endl;
     // newAddress >> std::cin;
@@ -137,7 +148,7 @@ int main(){
 
     Person person("Ali", "123", address);
 
-    person<<std::cout;
+
 
     }
 
