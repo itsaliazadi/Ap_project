@@ -10,7 +10,7 @@ class Address{
     public:
         Address(std::string Country="", std::string City="", std::string Street=""){
             country = Country;
-            City = city;
+            city = City;
             street = Street;
         }
 
@@ -29,24 +29,24 @@ class Address{
             return is;
         }
 
-        void getCountry(){
-            std::cout<<country<<"\n";
+        std::string getCountry(){
+            return country;
         }
 
         void setCountry(std::string Country){
             country = Country;
         }
 
-        void getCity(){
-            std::cout<<city<<"\n";
+        std::string getCity(){
+            return city;
         }
 
         void setCity(std::string City){
             city = City;
         }
 
-        void getStreet(){
-            std::cout<<street<<"\n";
+        std::string getStreet(){
+            return street;
         }
 
         void setStreet(std::string Street){
@@ -76,17 +76,36 @@ class Person{
             address = object.address;
         }
 
-        void getName(){
-            std::cout<<name<<"\n";
+        std::ostream& operator<<(std::ostream& os) {
+            os << "Name: " << name << ", ID: " << id << ", Address: " << address.getCountry() << "," << address.getCity() << "," << address.getStreet() << "\n";
+            return os;
         }
 
-        void getId(){
-            std::cout<<id<<"\n";
+        std::string getName(){
+            return name;
+        }
+
+        void setName(std::string Name){
+            name = Name;
+        }
+
+        std::string getId(){
+            return id;
+        }
+
+        void setId(std::string ID){
+            id = ID;
         }
 
         void getAddress(){
             address<<std::cout;
         }
+
+        void setAddress(Address ad){
+            address = ad;
+        }
+
+
 };
 
 
@@ -117,7 +136,8 @@ int main(){
     // std::cout << std::endl;
 
     Person person("Ali", "123", address);
-    person.getAddress();
+
+    person<<std::cout;
 
     }
 
