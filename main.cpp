@@ -198,6 +198,16 @@ class Employee{
             return os;
         }
 
+        std::istream& operator>>(std::istream& is) {
+            std::cout << "Enter name: ";
+            is >> name;
+            std::cout << "Enter id: ";
+            is >> id;
+            return is;
+        }
+
+
+
 };
 
 
