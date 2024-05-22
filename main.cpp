@@ -1,7 +1,7 @@
 #include <iostream>
 
 
-class Address {
+class Address{
 
     std::string country;
     std::string city;
@@ -30,7 +30,7 @@ class Address {
         }
 
         void getCountry(){
-            std::cout<<country;
+            std::cout<<country<<"\n";
         }
 
         void setCountry(std::string Country){
@@ -38,7 +38,7 @@ class Address {
         }
 
         void getCity(){
-            std::cout<<city;
+            std::cout<<city<<"\n";
         }
 
         void setCity(std::string City){
@@ -46,7 +46,7 @@ class Address {
         }
 
         void getStreet(){
-            std::cout<<street;
+            std::cout<<street<<"\n";
         }
 
         void setStreet(std::string Street){
@@ -57,17 +57,68 @@ class Address {
 };
 
 
+class Person{
+
+    std::string name;
+    std::string id;
+    Address address;
+
+    public:
+        Person(std::string Name="", std::string ID="", Address ad = Address()){
+            name = Name;
+            id = ID;
+            address = ad;
+        }
+
+        Person(Person& object){
+            name = object.name;
+            id = object.id;
+            address = object.address;
+        }
+
+        void getName(){
+            std::cout<<name<<"\n";
+        }
+
+        void getId(){
+            std::cout<<id<<"\n";
+        }
+
+        void getAddress(){
+            address<<std::cout;
+        }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 int main(){
     Address address("Iran", "Tehran", "Piroozi");
-    address<<std::cout;
-    Address newAddress;
-    std::cout << "Enter a new address:" << std::endl;
-    newAddress >> std::cin;
-    std::cout << "New address: ";
-    newAddress << std::cout;
-    std::cout << std::endl;
+    // address<<std::cout;
+    // Address newAddress;
+    // std::cout << "Enter a new address:" << std::endl;
+    // newAddress >> std::cin;
+    // std::cout << "New address: ";
+    // newAddress << std::cout;
+    // std::cout << std::endl;
 
-    newAddress.getCity();
+    Person person("Ali", "123", address);
+    person.getAddress();
+
     }
 
     
