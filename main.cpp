@@ -132,9 +132,71 @@ class Person{
                 return false;
             }
         }
+};
 
 
 
+class Employee{
+    public:
+        std::string name;
+        std::string id;
+        Address address;
+
+    private:
+        int hourWork;
+        int salaryPerHour;
+        int workToDo;
+        int workDone;
+
+    public:
+        Employee(std::string Name="", std::string ID="", Address ad = Address(), int HourWork=0, int SalaryPerHour=0, int WorkToDo=0, int WorkDone=0){
+            name = Name;
+            id = ID;
+            address = ad;
+            hourWork = HourWork;
+            salaryPerHour = SalaryPerHour;
+            workToDo = WorkToDo;
+            workDone = WorkDone;
+        }
+
+        Employee(Employee& object){
+            name = object.name;
+            id = object.id;
+            address = object.address;
+            hourWork = object.hourWork;
+            salaryPerHour = object.salaryPerHour;
+            workToDo = object.workToDo;
+            workDone = object.workDone;
+        }
+
+        std::string getName(){
+            return name;
+        }
+
+        std::string getId(){
+            return id;
+        }
+
+        int getHourWork(){
+            return hourWork;
+        }
+
+        int getSalary(){
+            return salaryPerHour;
+        }
+
+        int getWorkToDo(){
+            return workToDo;
+        }
+
+        int getWorkDone(){
+            return workDone;
+        }
+
+        std::ostream& operator<<(std::ostream& os) {
+            os << "Name: " << name << ", ID: " << id << ", Address: " << address.getCountry() << "," << address.getCity() << "," << address.getStreet() << ", HourWork:" << getHourWork() << ", SalaryPerHour:" << getSalary() << ", WorkToDo:" << getWorkToDo() << ", WorkDone:" << getWorkDone() << "\n";
+            return os;
+        }
 
 };
 
@@ -154,10 +216,11 @@ class Person{
 
 
 
-
 int main(){
     Address address("Iran", "Tehran", "Piroozi");
-    Person person("Ali", "87XYZ98772", address);
+    // Person person("Ali", "87XYZ98772", address);
+    Employee employee("Ali", "123", address, 10, 25, 5, 5);
+    employee << std::cout;
     }
 
     
