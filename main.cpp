@@ -265,8 +265,40 @@ class Employee{
             return eff;
 
         }
+};
 
 
+class Point{
+
+    private:
+        int x, y;
+    
+    public:
+        Point(int X=0, int Y=0){
+            x = X;
+            y = Y;
+        }
+
+        Point(Point& object){
+            x = object.x;
+            y = object.y;
+        }
+
+        Point operator+(const Point& other) const {
+            return Point(x + other.x, y + other.y);
+        }
+
+        Point operator-(const Point& other) const {
+            return Point(x - other.x, y - other.y);
+        }
+
+        int getX(){
+            return x;
+        }
+
+        int getY(){
+            return y;
+        }
 };
 
 
@@ -284,20 +316,23 @@ class Employee{
 
 
 
-
 int main(){
-    Address address("Iran", "Tehran", "Piroozi");
+    // Address address("Iran", "Tehran", "Piroozi");
     // Person person("Ali", "87ygh12378", address);
-    Employee employee("Ali", "87*gh12378", address);
-    employee.setHourWork(10);
-    employee.setSalryPerHour(10);
-    employee.setWorkToDo(5);
-    employee.setWorkDone(3);
-    std::cout<<"salary"<<"\n";
-    std::cout<<employee.calculateSalary();
-    std::cout<<"ef\n";
-    std::cout<<employee.efficiency();
-    // employee << std::cout;
+    // Employee employee("Ali", "87*gh12378", address);
+    // employee.setHourWork(10);
+    // employee.setSalryPerHour(10);
+    // employee.setWorkToDo(5);
+    // employee.setWorkDone(3);
+    // std::cout<<"salary"<<"\n";
+    // std::cout<<employee.calculateSalary();
+    // std::cout<<"ef\n";
+    // std::cout<<employee.efficiency();
+
+    Point p1(1,2);
+    Point p2(3, 4);
+
+    Point p3 = p1+p2;
     }
 
     
