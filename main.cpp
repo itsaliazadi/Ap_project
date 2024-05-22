@@ -8,7 +8,7 @@ class Address {
     std::string street;
 
     public:
-        Address(std::string Country, std::string City, std::string Street){
+        Address(std::string Country="", std::string City="", std::string Street=""){
             country = Country;
             City = city;
             street = Street;
@@ -60,7 +60,7 @@ class Address {
 int main(){
     Address address("Iran", "Tehran", "Piroozi");
     address<<std::cout;
-    Address newAddress("A", "A", "A");
+    Address newAddress;
     std::cout << "Enter a new address:" << std::endl;
     newAddress >> std::cin;
     std::cout << "New address: ";
