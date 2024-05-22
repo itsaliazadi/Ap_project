@@ -29,6 +29,30 @@ class Address {
             return is;
         }
 
+        void getCountry(){
+            std::cout<<country;
+        }
+
+        void setCountry(std::string Country){
+            country = Country;
+        }
+
+        void getCity(){
+            std::cout<<city;
+        }
+
+        void setCity(std::string City){
+            city = City;
+        }
+
+        void getStreet(){
+            std::cout<<street;
+        }
+
+        void setStreet(std::string Street){
+            street = Street;
+        }
+
 
 };
 
@@ -42,4 +66,8 @@ int main(){
     std::cout << "New address: ";
     newAddress << std::cout;
     std::cout << std::endl;
+
+    newAddress.getCity();
     }
+
+    
