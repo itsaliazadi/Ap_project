@@ -181,24 +181,48 @@ class Employee{
             return name;
         }
 
+        void setName(std::string Name){
+            name = Name;
+        }
+
         std::string getId(){
             return id;
+        }
+
+        void setId(std::string ID){
+            id = ID;
         }
 
         int getHourWork(){
             return hourWork;
         }
 
+        void setHourWork(int HourWork){
+            hourWork = HourWork;
+        }
+
         int getSalary(){
             return salaryPerHour;
+        }
+
+        void setSalryPerHour(int Salary){
+            salaryPerHour = Salary;
         }
 
         int getWorkToDo(){
             return workToDo;
         }
 
+        void setWorkToDo(int WorkToDo){
+            workToDo = WorkToDo;
+        }
+
         int getWorkDone(){
             return workDone;
+        }
+
+        void setWorkDone(int WorkDone){
+            workDone = WorkDone;
         }
 
         std::ostream& operator<<(std::ostream& os) {
@@ -216,7 +240,7 @@ class Employee{
 
         bool validate(std::string ID){
 
-            std::regex format("^(8[4-9]|9[0-9])[^\\d]{1,3}\\*[0-3|7-9]{5}$");
+            std::regex format("^(8[4-9]|9[0-9])\\*\\D{1,2}[0-35-9]{5}$");
 
             if (std::regex_match(ID, format)) {
                 return true;
@@ -227,11 +251,19 @@ class Employee{
 
         double calculateSalary(){
 
-            double ratio = workDone/workToDo;
+            double ratio = (static_cast<double>(workDone)/workToDo);
             double preSalary = hourWork * salaryPerHour;
             double finalSalary = preSalary * (1 - ratio);
 
             return finalSalary;
+            
+        }
+
+        double efficiency(){
+
+            double eff = (static_cast<double>(workDone) / hourWork)*100;
+            return eff;
+
         }
 
 
@@ -257,6 +289,14 @@ int main(){
     Address address("Iran", "Tehran", "Piroozi");
     // Person person("Ali", "87ygh12378", address);
     Employee employee("Ali", "87*gh12378", address);
+    employee.setHourWork(10);
+    employee.setSalryPerHour(10);
+    employee.setWorkToDo(5);
+    employee.setWorkDone(3);
+    std::cout<<"salary"<<"\n";
+    std::cout<<employee.calculateSalary();
+    std::cout<<"ef\n";
+    std::cout<<employee.efficiency();
     // employee << std::cout;
     }
 
