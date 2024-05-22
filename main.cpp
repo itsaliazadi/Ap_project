@@ -1,4 +1,5 @@
 #include <iostream>
+#include <regex>
 
 
 class Address{
@@ -65,9 +66,17 @@ class Person{
 
     public:
         Person(std::string Name="", std::string ID="", Address ad = Address()){
-            name = Name;
-            id = ID;
-            address = ad;
+
+            if (validate(ID)){
+                name = Name;
+                id = ID;
+                address = ad;
+            }
+
+            else{
+                std::cout<<"Invalid id..."<<"\n";
+            }
+
         }
 
         Person(Person& object){
@@ -86,8 +95,6 @@ class Person{
             is >> name;
             std::cout << "Enter id: ";
             is >> id;
-            // std::cout << "Enter street: ";
-            // is >> street;
             return is;
         }
 
@@ -115,6 +122,19 @@ class Person{
             address = ad;
         }
 
+        bool validate(std::string ID){
+
+            std::regex format("^(8[4-9]|9[0-9])[^\\d]{1,3}[4-6]{5}$");
+
+            if (std::regex_match(ID, format)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+
 
 };
 
@@ -137,19 +157,7 @@ class Person{
 
 int main(){
     Address address("Iran", "Tehran", "Piroozi");
-    // address<<std::cout;
-
-    // Address newAddress;
-    // std::cout << "Enter a new address:" << std::endl;
-    // newAddress >> std::cin;
-    // std::cout << "New address: ";
-    // newAddress << std::cout;
-    // std::cout << std::endl;
-
-    Person person("Ali", "123", address);
-
-
-
+    Person person("Ali", "87XYZ98772", address);
     }
 
     
