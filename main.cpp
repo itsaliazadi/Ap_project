@@ -320,6 +320,30 @@ class Point{
 };
 
 
+class Rectangle{
+
+    private:
+        Point startPoint;
+        int width;
+        int height;
+    
+    public:
+        Rectangle(int Height=0, int Width=0, Point StartPoint = Point()){
+            height = Height;
+            width = Width;
+            startPoint = StartPoint;
+        }
+
+        Rectangle(Rectangle& object){
+            height = object.height;
+            width = object.width;
+            startPoint = object.startPoint;
+        }
+
+        
+}
+
+
 
 
 
