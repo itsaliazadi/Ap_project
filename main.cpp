@@ -369,6 +369,14 @@ class Rectangle{
             }
         }
 
+        void operator/(Rectangle& other) {
+            startPoint.setX((startPoint.getX() + other.startPoint.getX()) / 2);
+            startPoint.setY((startPoint.getY() + other.startPoint.getY()) / 2);
+            int maxHeight = std::max(height, other.getHeight());
+            int maxWidth = std::max(width, other.getWidth());
+            height = width = maxHeight / maxWidth;
+        }
+
 
 };
 
