@@ -292,6 +292,15 @@ class Point{
             return Point(x - other.x, y - other.y);
         }
 
+        bool operator>=(const Point& other) const {
+            if ((x*x + y*y) > (other.x*other.x + other.y*other.y)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
         int getX(){
             return x;
         }
@@ -333,6 +342,11 @@ int main(){
     Point p2(3, 4);
 
     Point p3 = p1+p2;
+
+    if (p2 >= p1){
+        std::cout<<"yes";
+    }
+
     }
 
     
