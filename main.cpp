@@ -293,7 +293,7 @@ class Point{
         }
 
         bool operator>=(const Point& other) const {
-            if ((x*x + y*y) > (other.x*other.x + other.y*other.y)){
+            if ((x*x + y*y) >= (other.x*other.x + other.y*other.y)){
                 return true;
             }
             else{
@@ -305,9 +305,18 @@ class Point{
             return x;
         }
 
+        int setX(int X){
+            x = X;
+        }
+
         int getY(){
             return y;
         }
+
+        int setY(int Y){
+            y = Y;
+        }
+
 };
 
 
