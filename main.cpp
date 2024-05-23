@@ -2,6 +2,7 @@
 #include <regex>
 
 
+
 class Address{
 
     std::string country;
@@ -305,7 +306,7 @@ class Point{
             return x;
         }
 
-        int setX(int X){
+        void setX(int X){
             x = X;
         }
 
@@ -313,7 +314,7 @@ class Point{
             return y;
         }
 
-        int setY(int Y){
+        void setY(int Y){
             y = Y;
         }
 
@@ -340,8 +341,36 @@ class Rectangle{
             startPoint = object.startPoint;
         }
 
-        
-}
+        int getHeight(){
+            return height;
+        }
+
+        int getWidth(){
+            return width;
+        }
+
+        void operator+=(Rectangle& other) {
+            if ((startPoint.getX() == other.startPoint.getX()) && (startPoint.getY() == other.startPoint.getY())){
+                height = std::max(height, other.getHeight());
+                width = std::max(width, other.getWidth());
+            }
+            else{
+                std::cout<<"The start points are not the same!"<<"\n";
+            }
+        }
+
+        void operator-=(Rectangle& other) {
+            if ((startPoint.getX() == other.startPoint.getX()) && (startPoint.getY() == other.startPoint.getY())){
+                height = std::min(height, other.getHeight());
+                width = std::min(width, other.getWidth());
+            }
+            else{
+                std::cout<<"The start points are not the same!"<<"\n";
+            }
+        }
+
+
+};
 
 
 
@@ -372,13 +401,15 @@ int main(){
     // std::cout<<employee.efficiency();
 
     Point p1(1,2);
-    Point p2(3, 4);
+    Point p2(1, 2);
 
-    Point p3 = p1+p2;
+    Rectangle R1(1, 2, p1);
+    Rectangle R2(2, 3, p2);
 
-    if (p2 >= p1){
-        std::cout<<"yes";
-    }
+    R2 -= R1;
+
+    std::cout<<R1.getWidth();
+
 
     }
 
