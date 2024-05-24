@@ -315,6 +315,26 @@ class Point{
             return Point(x - other.x, y - other.y);
         }
 
+        Point& operator=(const Point& other) {
+            if (this != &other){  
+                x = other.x;
+                y = other.y;
+            }
+            return *this;
+        }
+
+        void operator/=(int number) {
+            if (number == 0){
+                std::cout<<"Invalid value!"<<"\n";
+            }
+            else{
+                x /= number;
+                y /= number;
+            }
+        }
+
+
+
         bool operator>=(const Point& other) const {
             if ((x*x + y*y) >= (other.x*other.x + other.y*other.y)){
                 return true;
