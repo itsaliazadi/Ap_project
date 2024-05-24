@@ -248,6 +248,19 @@ class Employee{
             return is;
         }
 
+        Employee& operator=(const Employee& other) {
+            if (this != &other){  
+                name = other.name;
+                id = other.id;
+                address = other.address;
+                hourWork = other.hourWork;
+                salaryPerHour = other.salaryPerHour;
+                workToDo = other.workToDo;
+                workDone = other.workDone;
+            }
+            return *this;
+        }
+
         bool validate(std::string ID){
 
             std::regex format("^(8[4-9]|9[0-9])\\*\\D{1,2}[0-35-9]{5}$");
