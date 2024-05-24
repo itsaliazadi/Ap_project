@@ -414,16 +414,14 @@ class Rectangle{
         void operator/(Rectangle& other) {
             startPoint.setX((startPoint.getX() + other.startPoint.getX()) / 2);
             startPoint.setY((startPoint.getY() + other.startPoint.getY()) / 2);
-            int maxHeight = std::max(height, other.getHeight());
-            int maxWidth = std::max(width, other.getWidth());
-            height = width = maxHeight / maxWidth;
+            height = height / other.height;
+            width = width / other.width;
         }
 
         bool collisionDetection(Rectangle rectangle){
             bool collision = !(startPoint.getX() + width < rectangle.startPoint.getX() || rectangle.startPoint.getX() + rectangle.getWidth() < startPoint.getX() || startPoint.getY() + height < rectangle.startPoint.getY() || rectangle.startPoint.getY() + rectangle.height < startPoint.getY());
             return collision;
         }
-
 
 };
 
