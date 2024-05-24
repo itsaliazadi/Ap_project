@@ -99,6 +99,15 @@ class Person{
             return is;
         }
 
+        Person& operator=(const Person& other) {
+            if (this != &other){  
+                name = other.name;
+                id = other.id;
+                address = other.address;
+            }
+            return *this;
+        }
+
         std::string getName(){
             return name;
         }
@@ -408,15 +417,15 @@ int main(){
     // std::cout<<"ef\n";
     // std::cout<<employee.efficiency();
 
-    Point p1(1,2);
-    Point p2(1, 2);
+    // Point p1(1,2);
+    // Point p2(1, 2);
 
-    Rectangle R1(1, 2, p1);
-    Rectangle R2(2, 3, p2);
+    // Rectangle R1(1, 2, p1);
+    // Rectangle R2(2, 3, p2);
 
-    R2 -= R1;
+    // R2 -= R1;
 
-    std::cout<<R1.getWidth();
+    // std::cout<<R1.getWidth();
 
 
     }
