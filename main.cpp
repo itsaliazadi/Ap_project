@@ -419,6 +419,11 @@ class Rectangle{
             height = width = maxHeight / maxWidth;
         }
 
+        bool collisionDetection(Rectangle rectangle){
+            bool collision = !(startPoint.getX() + width < rectangle.startPoint.getX() || rectangle.startPoint.getX() + rectangle.getWidth() < startPoint.getX() || startPoint.getY() + height < rectangle.startPoint.getY() || rectangle.startPoint.getY() + rectangle.height < startPoint.getY());
+            return collision;
+        }
+
 
 };
 
@@ -450,11 +455,13 @@ int main(){
     // std::cout<<"ef\n";
     // std::cout<<employee.efficiency();
 
-    // Point p1(1,2);
-    // Point p2(1, 2);
+    Point p1(1,2);
+    Point p2(1, 2);
 
-    // Rectangle R1(1, 2, p1);
-    // Rectangle R2(2, 3, p2);
+    Rectangle R1(1, 2, p1);
+    Rectangle R2(2, 3, p2);
+
+    R1.collisionDetection(R2);
 
     // R2 -= R1;
 
