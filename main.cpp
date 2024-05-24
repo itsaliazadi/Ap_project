@@ -16,11 +16,13 @@ class Address{
             street = Street;
         }
 
+        // << operator prints the whole address.
         std::ostream& operator<<(std::ostream& os) const {
             os << "Country: " << country << ", City: " << city << ", Street: " << street;
             return os;
         }
 
+        // >> operator asks the user for their address.
         std::istream& operator>>(std::istream& is) {
             std::cout << "Enter country: ";
             is >> country;
@@ -31,6 +33,7 @@ class Address{
             return is;
         }
 
+        // Getters and setters
         std::string getCountry(){
             return country;
         }
@@ -55,7 +58,6 @@ class Address{
             street = Street;
         }
 
-
 };
 
 
@@ -68,6 +70,7 @@ class Person{
     public:
         Person(std::string Name="", std::string ID="", Address ad = Address()){
 
+            // Vaidating the id of the user
             if (validate(ID)){
                 name = Name;
                 id = ID;
@@ -80,17 +83,20 @@ class Person{
 
         }
 
+        // Copy constructor
         Person(Person& object){
             name = object.name;
             id = object.id;
             address = object.address;
         }
 
+        // << operator prints the person's information.
         std::ostream& operator<<(std::ostream& os) {
             os << "Name: " << name << ", ID: " << id << ", Address: " << address.getCountry() << "," << address.getCity() << "," << address.getStreet() << "\n";
             return os;
         }
 
+        // >> operator asks the user for their address.
         std::istream& operator>>(std::istream& is) {
             std::cout << "Enter name: ";
             is >> name;
@@ -99,6 +105,7 @@ class Person{
             return is;
         }
 
+        // Overloading the = operator
         Person& operator=(const Person& other) {
             if (this != &other){  
                 name = other.name;
@@ -108,6 +115,7 @@ class Person{
             return *this;
         }
 
+        // Getters and setters
         std::string getName(){
             return name;
         }
@@ -132,6 +140,7 @@ class Person{
             address = ad;
         }
 
+        // The validate function validates users' ids using regex.
         bool validate(std::string ID){
 
             std::regex format("^(8[4-9]|9[0-9])\\D{1,3}[0-35-9]{5}$");
@@ -161,6 +170,7 @@ class Employee{
     public:
         Employee(std::string Name="", std::string ID="", Address ad = Address(), int HourWork=0, int SalaryPerHour=0, int WorkToDo=0, int WorkDone=0){
             
+            // Validating the employee's id
             if (validate(ID)){
                 name = Name;
                 id = ID;
@@ -177,6 +187,7 @@ class Employee{
 
         }
 
+        // Copy constructor
         Employee(Employee& object){
             name = object.name;
             id = object.id;
@@ -187,6 +198,7 @@ class Employee{
             workDone = object.workDone;
         }
 
+        // Getters and setters
         std::string getName(){
             return name;
         }
@@ -235,11 +247,13 @@ class Employee{
             workDone = WorkDone;
         }
 
+        // << operator prints the employee's information.
         std::ostream& operator<<(std::ostream& os) {
             os << "Name: " << name << ", ID: " << id << ", Address: " << address.getCountry() << "," << address.getCity() << "," << address.getStreet() << ", HourWork:" << getHourWork() << ", SalaryPerHour:" << getSalary() << ", WorkToDo:" << getWorkToDo() << ", WorkDone:" << getWorkDone() << "\n";
             return os;
         }
 
+        // >> operator asks the user for their address.
         std::istream& operator>>(std::istream& is) {
             std::cout << "Enter name: ";
             is >> name;
@@ -248,6 +262,7 @@ class Employee{
             return is;
         }
 
+        // Overloading the = operator
         Employee& operator=(const Employee& other) {
             if (this != &other){  
                 name = other.name;
@@ -261,6 +276,7 @@ class Employee{
             return *this;
         }
 
+        // The validate function validates users' ids using regex.
         bool validate(std::string ID){
 
             std::regex format("^(8[4-9]|9[0-9])\\*\\D{1,2}[0-35-9]{5}$");
@@ -284,7 +300,7 @@ class Employee{
 
         double efficiency(){
 
-            double eff = (static_cast<double>(workDone) / hourWork)*100;
+            double eff = (static_cast<double>(workDone) / hourWork)*100;// Casting the integer to double
             return eff;
 
         }
@@ -302,6 +318,7 @@ class Point{
             y = Y;
         }
 
+        // Copy constructor
         Point(Point& object){
             x = object.x;
             y = object.y;
@@ -334,7 +351,7 @@ class Point{
         }
 
 
-
+        // Checking their distances from point(0,0)
         bool operator>=(const Point& other) const {
             if ((x*x + y*y) >= (other.x*other.x + other.y*other.y)){
                 return true;
@@ -344,6 +361,7 @@ class Point{
             }
         }
 
+        // Getters and setters
         int getX(){
             return x;
         }
@@ -359,7 +377,6 @@ class Point{
         void setY(int Y){
             y = Y;
         }
-
 };
 
 
@@ -377,18 +394,28 @@ class Rectangle{
             startPoint = StartPoint;
         }
 
+        // Copy constructor
         Rectangle(Rectangle& object){
             height = object.height;
             width = object.width;
             startPoint = object.startPoint;
         }
 
+        // Getters and setters
         int getHeight(){
             return height;
         }
 
+        void setHeight(int Height){
+            height = Height;
+        }
+
         int getWidth(){
             return width;
+        }
+
+        void setWidth(int Width){
+            width = Width;
         }
 
         void operator+=(Rectangle& other) {
@@ -425,33 +452,19 @@ class Rectangle{
 
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 int main(){
-    // Address address("Iran", "Tehran", "Piroozi");
-    // Person person("Ali", "87ygh12378", address);
-    // Employee employee("Ali", "87*gh12378", address);
-    // employee.setHourWork(10);
-    // employee.setSalryPerHour(10);
-    // employee.setWorkToDo(5);
-    // employee.setWorkDone(3);
-    // std::cout<<"salary"<<"\n";
-    // std::cout<<employee.calculateSalary();
-    // std::cout<<"ef\n";
-    // std::cout<<employee.efficiency();
+
+    Address address("Iran", "Tehran", "Piroozi");
+    Person person("Ali", "87ygh12378", address);
+    Employee employee("Ali", "87*gh12378", address);
+    employee.setHourWork(10);
+    employee.setSalryPerHour(10);
+    employee.setWorkToDo(5);
+    employee.setWorkDone(3);
+    std::cout<<"salary:";
+    std::cout<<employee.calculateSalary()<<"\n";
+    std::cout<<"efficiency:";
+    std::cout<<employee.efficiency()<<"%";
 
     Point p1(1,2);
     Point p2(1, 2);
@@ -459,12 +472,11 @@ int main(){
     Rectangle R1(1, 2, p1);
     Rectangle R2(2, 3, p2);
 
-    R1.collisionDetection(R2);
+    R2 -= R1;
 
-    // R2 -= R1;
-
-    // std::cout<<R1.getWidth();
-
+    if (R1.collisionDetection(R2)){
+        std::cout<<"R1 and R2 have collided."<<"\n";
+    }
 
     }
 
